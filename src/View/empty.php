@@ -1,0 +1,1 @@
+<? include $data['params']['PATH_VIEW'].$template.'.php'; ?>
