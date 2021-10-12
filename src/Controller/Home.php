@@ -81,7 +81,7 @@ class Home
 
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))
         {
-            $_SESSION['home']['formMessage']['email'] = 'Email введен не коррекно';
+            $_SESSION['home']['formMessage']['email'] = 'Email не валиден';
         }
 
 

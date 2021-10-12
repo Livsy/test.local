@@ -95,7 +95,16 @@
         </span>
     </div>
     <div class="card-body">
-        <p><strong>email:</strong> <?=$item['email']?></p>
+        <p>
+            <strong>email:</strong>
+
+            <?if(isset($data['session']['isAdmin']) && $data['session']['isAdmin'] == true):?>
+                <a href="/home/message=<?=$item['id']?>"><?=$item['email']?></a>
+            <?else:?>
+                <?=$item['email']?>
+            <?endif;?>
+
+        </p>
         <strong>текст задачи:</strong>
         <p class="card-text"><?=$item['message']?></p>
         <p><strong>статус:</strong> <?=!$item['status'] ? 'Не выполнено' : 'Выполнено'?></p>

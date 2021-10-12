@@ -18,22 +18,28 @@ class Admin
 
     function isAdmin()
     {
+        $flagEmail = true;
+        $flagPass = true;
         $flag = true;
 
         if(!isset($_POST['email']) || $_POST['email'] != 'admin')
         {
-            $flag = false;
+            $flag = $flagEmail = false;
         }
 
         if(!isset($_POST['pass']) || $_POST['pass'] != '123')
         {
-            $flag = false;
+            $flag = $flagPass = false;
         }
 
 
-        if(!$flag)
+        if(!$flagEmail && !$flagPass)
         {
-            $_SESSION['admin']['form']['message'] = 'Логин или пароль не верны';
+            $_SESSION['admin']['form']['message'] = 'Введенные данные не верные';
+        }
+        else if(!$flagEmail || !$flagPass)
+        {
+            $_SESSION['admin']['form']['message'] = 'Неправильные реквизиты доступа';
         }
 
         return $flag;
